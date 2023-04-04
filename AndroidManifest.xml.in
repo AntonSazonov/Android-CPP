@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.${APP}" android:versionCode="1" android:versionName="1.0">
+
+	<!-- Immersive mode works fine for me with targetSdkVersion >= "24" -->
+	<uses-sdk
+		android:minSdkVersion="${CMAKE_SYSTEM_VERSION}"
+		android:targetSdkVersion="24"/>
+
+	<uses-feature android:glEsVersion="0x00030000" android:required="true" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.FLASHLIGHT" />
+
+	<!--
+		android:icon="@mipmap/ic_launcher"
+	-->
+	<application
+		android:debuggable="true"
+		android:hasCode="false">
+
+		<activity
+			android:label="${APP}"
+			android:name="android.app.NativeActivity"
+			android:screenOrientation="sensorLandscape"
+			android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+			android:configChanges="keyboardHidden">
+
+			<meta-data
+				android:name="android.app.lib_name"
+				android:value="${APP}"/>
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
+		</activity>
+	</application>
+</manifest>
